@@ -20,7 +20,9 @@
       <%= render :partial => 'spree/admin/shared/address', :locals => { :address => @order.ship_address } %>
     </div>
   <% end %>
-  <%= link_to @order.user.email, object_url(@order.user) %>
+  <p>
+    <%= link_to_with_icon 'icon-user', t(:view_user_account), admin_user_path(@order.user), :class => 'btn btn-small' %>
+  </p>
 </div>
 
 <div data-hook="admin_order_show_details">
