@@ -37,23 +37,25 @@
 
       <div class="container-fluid">
 
-        <% if flash[:error] %>
-          <div class="error alert alert-danger"><%= flash[:error] %></div>
-        <% end %>
-        <% if notice %>
-          <div class="notice alert"><%= notice %></div>
-        <% end %>
-        <% if flash[:success] %>
-          <div class="alert alert-success"><%= flash[:success] %></div>
-        <% end %>
+        <div class="alerts">
+          <% if flash[:error] %>
+            <div class="error alert alert-danger"><%= flash[:error] %></div>
+          <% end %>
+          <% if notice %>
+            <div class="notice alert"><%= notice %></div>
+          <% end %>
+          <% if flash[:success] %>
+            <div class="alert alert-success"><%= flash[:success] %></div>
+          <% end %>
 
-        <div id="progress">
-          <div class="wrapper">
-            <div class="progress-message alert alert-info"><%= t(:loading) %>...</div>
+          <div id="progress">
+            <div class="wrapper">
+              <div class="progress-message alert alert-info"><%= t(:loading) %>...</div>
+            </div>
           </div>
-        </div>
 
-        <%= render :partial => 'spree/admin/shared/alert', :collection => session[:alerts] %>
+          <%= render :partial => 'spree/admin/shared/alert', :collection => session[:alerts] %>
+        </div>
 
         <% if content_for?(:page_title) || content_for?(:page_actions) %>
           <div id="content-header" data-hook>
@@ -71,15 +73,14 @@
           </div>
         <% end %>
 
+        <% if content_for?(:full_content) %>
+          <%= yield :full_content %>
+        <% end %>
+
         <div class="row-fluid <%= 'with-sidebar ' if content_for?(:sidebar) %>" id="content" data-hook>
 
           <% if content_for?(:sidebar) %>
             <aside id="sidebar" data-hook class="span3">
-
-              <% if content_for?(:sidebar_title) %>
-                <div class="well"><%= yield :sidebar_title %></div>
-              <% end %>
-
               <%= yield :sidebar %>
             </aside>
           <% end %>

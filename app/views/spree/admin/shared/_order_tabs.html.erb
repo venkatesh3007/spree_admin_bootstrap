@@ -1,0 +1,89 @@
+<% content_for :page_title do %>
+  <%= t(:order) %> #<%= @order.number %>
+<% end %>
+
+<% content_for :sidebar do %>
+
+  <nav>
+    <ul class="nav nav-list sidebar-nav" data-hook="admin_order_tabs">
+      <% unless @order.completed? %>
+        <li<%== ' class="active"' if current == 'Order Details' %>>
+          <i class="icon-chevron-right"></i>
+          <%= link_to t(:order_details), edit_admin_order_url(@order) %>
+        </li>
+        <li<%== ' class="active"' if current == 'Customer Details' %>>
+          <i class="icon-chevron-right"></i>
+          <%= link_to t(:customer_details), admin_order_customer_url(@order) %>
+        </li>
+        <li<%== ' class="active"' if current == 'Shipments' %>>
+          <i class="icon-chevron-right"></i>
+          <%=link_to t(:shipments), @order.line_items.empty? || !@order.completed? ? 'javascript:$("form").submit();' : edit_admin_order_shipment_url(@order, @order.shipment) %>
+        </li>
+        <li<%== ' class="active"' if current == 'Adjustments' %>>
+          <i class="icon-chevron-right"></i>
+          <%= link_to t(:adjustments), @order.line_items.empty? || !@order.completed? ? 'javascript:$("form").submit();' : admin_order_adjustments_url(@order) %>
+        </li>
+        <li<%== ' class="active"' if current == 'Payments' %>>
+          <i class="icon-chevron-right"></i>
+          <%= link_to t(:payments), @order.line_items.empty? || !@order.completed? ? 'javascript:$("form").submit();' : new_admin_order_payment_url(@order) %>
+        </li>
+
+      <% else %>
+        <li<%== ' class="active"' if current == 'Order Details' %>>
+          <i class="icon-chevron-right"></i>
+          <%= link_to t(:order_details), edit_admin_order_url(@order) %>
+        </li>
+        <li<%== ' class="active"' if current == 'Customer Details' %>>
+          <i class="icon-chevron-right"></i>
+          <%= link_to t(:customer_details), admin_order_customer_url(@order) %>
+        </li>
+        <li<%== ' class="active"' if current == 'Adjustments' %>>
+          <i class="icon-chevron-right"></i>
+          <%= link_to t(:adjustments), admin_order_adjustments_url(@order) %>
+        </li>
+        <li<%== ' class="active"' if current == 'Payments' %>>
+          <i class="icon-chevron-right"></i>
+          <%= link_to t(:payments), admin_order_payments_url(@order) %>
+        </li>
+        <li<%== ' class="active"' if current == 'Shipments' %>>
+          <i class="icon-chevron-right"></i>
+          <%= link_to t(:shipments), admin_order_shipments_url(@order) %>
+        </li>
+        <li<%== ' class="active"' if current == 'Return Authorizations' %>>
+          <i class="icon-chevron-right"></i>
+          <%= link_to t(:return_authorizations), admin_order_return_authorizations_url(@order) %>
+        </li>
+      <% end %>
+    </ul>  
+  </nav>
+
+  <div class="well" id="order_tab_summary" data-hook>
+    <h4><%= t(:order_information) %></h4>
+    <table class="table table-condensed nomarginb">
+      <tr>
+        <th id="order_status" data-hook><%= t(:status) %></th>
+        <td><span class="state <%= @order.state %>"><%= t(@order.state, :scope => :order_state) %></span></td>
+      </tr>
+      <tr>
+        <th data-hook><%= t(:total) %></th>
+        <td id='order_total'><%= @order.display_total.to_html %></td>
+      </tr>
+
+      <% if @order.completed? %>
+        <tr>
+          <th><%= t(:shipment) %></th>
+          <td id='shipment_status'><span class="state <%= @order.shipment_state %>"><%= t(@order.shipment_state, :scope => :shipment_states, :default => [:missing, "none"]) %></span></td>
+        </tr>
+        <tr>
+          <th><%= t(:payment) %></th>
+          <td id='payment_status'><span class="state <%= @order.payment_state %>"><%= t(@order.payment_state, :scope => :payment_states, :default => [:missing, "none"]) %></span></td>
+        </tr>
+        <tr>
+          <th data-hook><%= t(:date_completed) %></th>
+          <td id='date_complete'><%= pretty_time(@order.completed? ? @order.completed_at : @order.created_at) %></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+
+<% end %>

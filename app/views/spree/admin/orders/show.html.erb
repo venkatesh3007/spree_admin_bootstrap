@@ -1,0 +1,28 @@
+<% content_for :page_actions do %>
+  <%= button_link_to t(:cancel), fire_admin_order_url(@order.number, { :e => 'cancel' }), :icon => 'icon-trash icon-white', :class => 'btn btn-danger', :data => { :confirm => t(:are_you_sure) } if @order.can_cancel? %>
+  <%= button_link_to t(:edit), edit_admin_order_url(@order.number), :icon => 'icon-edit', :class => 'btn' %>
+  <%= button_link_to t(:back_to_orders_list), admin_orders_path, :icon => 'icon-arrow-left', :class => 'btn' %>
+<% end %>
+
+
+<%= render :partial => 'spree/admin/shared/order_tabs', :locals => { :current => 'Order Details' } %>
+
+<div data-hook="admin_order_show_addresses" class="row-fluid marginb">
+  <% if @order.bill_address %>
+    <div class="span6">
+      <h2><%= t(:bill_address) %></h2>
+      <%= render :partial => 'spree/admin/shared/address', :locals => { :address => @order.bill_address } %>
+    </div>
+  <% end %>
+  <% if @order.ship_address %>
+    <div class="span6">
+      <h2><%= t(:ship_address) %></h2>
+      <%= render :partial => 'spree/admin/shared/address', :locals => { :address => @order.ship_address } %>
+    </div>
+  <% end %>
+  <%= link_to @order.user.email, object_url(@order.user) %>
+</div>
+
+<div data-hook="admin_order_show_details">
+  <%= render :partial => 'spree/admin/shared/order_details', :locals => { :order => @order } %>
+</div>

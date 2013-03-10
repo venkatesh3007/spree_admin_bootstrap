@@ -1,3 +1,5 @@
 <div class="form-actions filter-actions actions" data-hook="buttons">
   <%= button t(:update), 'btn btn-large btn-primary' %>
+  <span class="or"><%= t(:or) %></span>
+  <%= button_link_to t(:cancel), collection_url, :icon => 'icon-remove', :class => 'btn' %>
 </div>
