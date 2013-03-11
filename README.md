@@ -22,5 +22,13 @@ Progress after a lazy sunday hackfest.
 ### Edit product
 ![image](screens/screen2.png)
 
+
+### Edit product images
+![image](screens/screen4.png)
+
 ### New order
 ![image](screens/screen3.png)
+
+
+### General settings
+![image](screens/screen5.png)
