@@ -77,7 +77,7 @@
           <%= yield :full_content %>
         <% end %>
 
-        <div class="row-fluid <%= 'with-sidebar ' if content_for?(:sidebar) %>" id="content" data-hook>
+        <div class="<%= 'row-fluid' if content_for?(:sidebar) or content_for?(:table_filter) %>" id="content" data-hook>
 
           <% if content_for?(:sidebar) %>
             <aside id="sidebar" data-hook class="span3">
@@ -85,7 +85,7 @@
             </aside>
           <% end %>
 
-          <div class="span9">
+          <div class="<%= 'span9' if content_for?(:sidebar) or content_for?(:table_filter) %>">
             <%= yield %>
           </div>
 

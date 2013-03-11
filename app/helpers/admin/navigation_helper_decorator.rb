@@ -22,6 +22,7 @@ Spree::Admin::NavigationHelper.class_eval do
       link_to(text_for_button_link(raw('<i class="'+html_options.delete(:icon)+'"></i> '+text), html_options), url, html_options)
     end
   end
+
   def link_to_with_icon(icon_name, text, url, options = {})
     options[:class] = (options[:class].to_s + " icon_link with-tip").strip
     if options[:no_text]
@@ -32,5 +33,13 @@ Spree::Admin::NavigationHelper.class_eval do
     text = options[:no_text] ? '' : raw("<i class='#{icon_name}'></i> #{text}")
     options.delete(:no_text)
     link_to(text, url, options)
+  end
+
+  def configurations_sidebar_menu_item(link_text, url, options = {})
+    is_active = url.ends_with?(controller.controller_name) || url.ends_with?( "#{controller.controller_name}/edit")
+    options.merge!(:class => is_active ? 'active' : nil)
+    content_tag(:li, options) do
+      raw('<i class="icon-chevron-right"></i>')+link_to(link_text, url)
+    end
   end
 end

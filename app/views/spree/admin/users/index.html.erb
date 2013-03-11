@@ -1,0 +1,45 @@
+<% content_for :page_title do %>
+  <%= t(:listing_users) %>
+<% end %>
+
+<% content_for :page_actions do %>
+  <%= button_link_to t(:new_user), new_object_url, :icon => 'icon-plus icon-white', :id => 'admin_new_user_link', :class => 'btn btn-success' %>
+<% end %>
+
+<table class="table table-bordered table-striped table-condensed table-hover" id="listing_users" data-hook>
+  <thead>
+    <tr data-hook="admin_users_index_headers">
+      <th><%= sort_link @search,:email, t(:user), {}, {:title => 'users_email_title'} %></th>
+      <th data-hook="admin_users_index_header_actions" class="actions"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user|%>
+      <tr id="<%= spree_dom_id user %>" data-hook="admin_users_index_rows" class="<%= cycle('odd', 'even')%>">
+        <td class='user_email'><%=link_to user.email, object_url(user) %></td>
+        <td data-hook="admin_users_index_row_actions" class="actions">
+          <%= link_to_edit user, :no_text => true %>
+          <%= link_to_delete user, :no_text => true %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= paginate @users %>
+
+<% content_for :table_filter_title do %>
+  <%= t(:search) %>
+<% end %>
+
+<% content_for :table_filter do %>
+  <div class="box align-center" data-hook="admin_users_index_search">    
+    <%= search_form_for [:admin, @search] do |f| %>
+      <%= f.label t(:email) %>
+      <%= f.text_field :email_cont, :class => 'fullwidth' %>
+      <div data-hook="admin_users_index_search_buttons" class="form-actions">
+        <%= button raw("<i class='icon-search icon-white'></i> "+t(:search)), 'btn btn-primary' %>
+      </div>
+    <% end %>
+  </div>
+<% end %>

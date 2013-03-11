@@ -3,6 +3,12 @@ Spree Admin Bootstrap
 
 Spree 1-3-stable admin Bootstrap theme.
 
+Features
+-----------
+- Full rework of the Spree Admin with Twitter Bootstrap
+- Added features to the admin
+- Fixed/tuned some Javascript work
+-- app\views\spree\admin\prototypes\select.js.erb
 
 
 Screenshots
