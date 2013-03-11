@@ -68,9 +68,10 @@ aside#sidebar {
     margin-bottom: 0;
   }
 }
-.table-product-properties {
+.table-product-properties,
+.table-option-type-properties {
   [class^="icon-"], [class*=" icon-"] {
-    margin-top: 5px;
+    margin: 5px 0 0 10px;
   }
 }
 #add-line-item .add-quantity input#add_quantity {
@@ -106,8 +107,13 @@ table tr td:first-of-type {
   padding-right: 7px;
 }
 
-.new-product-div {
+.new-product-div, .new-option-type-div {
   display: none;
+  .form-actions {
+    padding-left: 0;
+    padding-bottom: 0;
+    margin-bottom: 0;
+  }
 }
 
 span.or {

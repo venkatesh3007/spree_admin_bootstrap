@@ -1,0 +1,13 @@
+<div data-hook="admin_option_type_form_fields">
+  <%= f.field_container :name do %>
+    <%= f.label :name, t(:name)+" *" %>
+    <%= f.text_field :name, :class => "fullwidth" %>
+    <%= f.error_message_on :name %>
+  <% end %>
+
+  <%= f.field_container :presentation do %>
+    <%= f.label :presentation, t(:presentation)+" *" %>
+    <%= f.text_field :presentation, :class => "fullwidth" %>
+    <%= f.error_message_on :presentation %>
+  <% end %>
+</div>
