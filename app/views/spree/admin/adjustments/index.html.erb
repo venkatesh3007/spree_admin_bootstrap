@@ -1,0 +1,17 @@
+<%= render :partial => 'spree/admin/shared/order_tabs', :locals => { :current => 'Adjustments' } %>
+
+<% content_for :page_title do %>
+   - <%= t(:adjustments) %>
+<% end %>
+
+<% content_for :page_actions do %>
+  <%= button_link_to t(:back_to_orders_list), admin_orders_path, :icon => 'icon-arrow-left', :class => 'btn' %>
+  <%= button_link_to t(:new_adjustment), new_admin_order_adjustment_url(@order), :icon => 'icon-plus icon-white', :class => 'btn btn-success' %>
+<% end %>
+
+<%= render :partial => 'adjustments_table' %>
+
+<div class="form-actions">
+  <%= button_link_to t(:continue), @order.cart? ? new_admin_order_payment_url(@order) : admin_orders_url, :icon => ' ', :class => 'btn btn-primary btn-large' %>
+</div>
+

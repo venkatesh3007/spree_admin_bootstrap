@@ -57,6 +57,11 @@
   <%= javascript_tag do -%>
     $(document).ready(function(){
       $('span#<%= name == t(:shipping_address) ? 's' : 'b' %>country .select2').on('change', function() { update_state('<%= name == t(:shipping_address) ? 's' : 'b' %>'); });
+      var country = $('span#<%= name == t(:shipping_address) ? 's' : 'b' %>country .select2').select2('val');
+      var states = state_mapper[country];
+      if(!states){
+        update_state('<%= name == t(:shipping_address) ? 's' : 'b' %>');
+      }
     });
   <% end -%>
 <% end %>

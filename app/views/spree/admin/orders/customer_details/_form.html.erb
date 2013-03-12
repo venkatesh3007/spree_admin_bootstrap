@@ -3,34 +3,30 @@
   <fieldset class="index no-border-bottom" data-hook="customer_guest">
     <legend><%= t(:account) %></legend>
       
-    <div data-hook="customer_fields">
-      <div class="alpha eight columns">
+    <div data-hook="customer_fields" class="row-fluid marginb">
+      <div class="span3">
         <div class="field">
           <%= f.label :email, t(:email) + ':' %>
           <%= f.email_field :email, :class => 'fullwidth' %>
         </div>
       </div>
-      <div class="omega four columns">
+      <div class="span6">
         <div class="field">
-          <%= label_tag nil, t(:guest_checkout) %>:
-          <ul>
+          <%= label_tag nil, t(:guest_checkout) %>
             <% if @order.completed? %>
-              <li>
-                <%= @order.user.nil? ? t(:yes) : t(:no) %>
-              </li>
+              <strong><%= @order.user.nil? ? t(:yes) : t(:no) %></strong>
             <% else %>
               <% guest = @order.user.nil? || @order.user.anonymous? %>
-              <li>
+              <div class="radio">
                 <%= radio_button_tag :guest_checkout, true, guest %>
                 <%= t(:yes) %>
-              </li>
-              <li>
+              </div>
+              <div class="radio">
                 <%= radio_button_tag :guest_checkout, false, !guest, :disabled => @order.cart? %>
-                <%= t(:no) %>  
-              </li>              
+                <%= t(:no) %>
+              </div>
               <%= hidden_field_tag :user_id, @order.user_id %>
             <% end %>
-          </ul>
         </div>
       </div>
     </div>
@@ -60,7 +56,7 @@
     </div>
   </div>
 
-  <div class="form-buttons form-actions actions" data-hook="buttons">
+  <div class="form-actions nomargint" data-hook="buttons">
     <%= button @order.cart? ? t(:continue) : t(:update), @order.cart? ? 'btn btn-primary btn-large' : 'btn btn-primary btn-large', :class => '' %>
   </div>
 
