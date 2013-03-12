@@ -1,0 +1,41 @@
+<% content_for :page_actions do %>
+  <% if @shipment.can_ship? %>
+      <%= button_link_to t(:ship), fire_admin_order_shipment_path(@order, @shipment, :e => 'ship'), :method => :put, :data => { :confirm => t(:are_you_sure) }, :icon => 'icon-plane', :class => 'btn btn-success' %>
+  <% end %>
+  <%= button_link_to t(:back_to_orders_list), admin_orders_path, :icon => 'icon-arrow-left', :class => 'btn' %>
+<% end %>
+
+<%= render :partial => 'spree/admin/shared/order_tabs', :locals => { :current => 'Shipments' } %>
+
+<% content_for :page_title do %>
+  - <%= t(:shipments) %> - #<%= @shipment.number%> (<%= t(@shipment.state.to_sym, :scope => :state_names, :default => @shipment.state.to_s.humanize) %>)
+<% end %>
+
+<div data-hook="admin_shipment_edit_header">
+
+  <% if @shipment.cost %>
+    <div class="well outstanding-balance"><%= t(:charges) %> <strong><%= @shipment.display_cost %></strong></div>
+  <% end %>
+
+  <%= render :partial => 'spree/shared/error_messages', :locals => { :target => @shipment } %>
+</div>
+
+<div data-hook="admin_shipment_edit_form">
+  <%= form_for @shipment, :url => admin_order_shipment_path(@order, @shipment), :method => :put do |shipment_form| %>
+    <fieldset class="no-border-top">
+      <%= render :partial => 'form', :locals => { :shipment_form => shipment_form } %>
+
+
+      <div class="form-actions" data-hook="admin_shipment_edit_form_buttons">
+        <% if @shipment.editable_by?(try_spree_current_user) %>
+          <%= button @order.cart? ? t(:continue) : t(:update), @order.cart? ? 'btn btn-primary btn-large' : 'btn btn-primary btn-large' %>
+          <span class="or"><%= t(:or) %></span>
+          <%= button_link_to t(:cancel), admin_order_shipments_path(@order), :icon => 'icon-remove', :class => 'btn'   %>
+        <% else %>
+          <%= button_link_to t(:back), edit_admin_order_shipment_path(@order), :icon => 'icon-arrow-left', :class => 'btn'  %>
+        <% end %>
+      </div>
+
+    </fieldset>
+  <% end %>
+</div>
