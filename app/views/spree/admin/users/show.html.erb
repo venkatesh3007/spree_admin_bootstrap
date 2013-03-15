@@ -2,7 +2,7 @@
   <%= t(:user_account) %>
 <% end %>
 
-<table class="index">
+<table class="index table table-bordered table-striped table-condensed table-hover">
   <tr data-hook="email">
     <td width="200"><strong><%= t(:email) %></strong></td>
     <td>
@@ -47,13 +47,15 @@
   <% end %>
 </table>
 
+
 <% @last_paid_orders =  @user.orders.where("state = 'complete'").last %>
 <% unless @last_paid_orders.blank? %>
+  <div class="row">
     <% unless @last_paid_orders.bill_address.blank? or @last_paid_orders.ship_address.blank? %>
-      <div class="alpha eight columns">
+      <div class="span6">
         <% unless @last_paid_orders.bill_address.blank? %>
           <h2><%= t(:last_used_billing_address) %></h2>
-          <table class="index">
+          <table class="index table table-bordered table-striped table-condensed table-hover">
             <tr>
               <td width="200"><strong><%= t(:firstname) %></strong></td>
               <td><%= @last_paid_orders.bill_address.firstname %></td>
@@ -101,10 +103,10 @@
           </table>
         <% end %>
       </div>
-      <div class="omega eight columns">
+      <div class="span6">
         <% unless @last_paid_orders.ship_address.blank? %>
           <h2><%= t(:last_used_shipping_address) %></h2>
-          <table class="index">
+          <table class="index table table-bordered table-striped table-condensed table-hover">
             <tr>
               <td width="200"><strong><%= t(:firstname) %></strong></td>
               <td><%= @last_paid_orders.ship_address.firstname %></td>
@@ -153,11 +155,14 @@
         <% end %>
       </div>
     <% end %>
+  </div>
 <% end %>
+
+</div>
 
 <% unless @user.orders.blank? %>
   <h2><%= t(:user_orders) %></h2>
-  <table class="index" id="listing_orders" data-hook>
+  <table class="index table table-bordered table-striped table-condensed table-hover" id="listing_orders" data-hook>
     <thead>
     <tr>
       <th><%= t(:order_id) %></th>
