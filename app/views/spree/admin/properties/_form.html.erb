@@ -1,0 +1,16 @@
+<div data-hook="admin_property_form" class="row-fluid">
+  <div class="span6">
+    <%= f.field_container :name do %>
+      <%= f.label :name, t(:name)+" *" %>
+      <%= f.text_field :name, :class => 'span12' %>
+      <%= f.error_message_on :name %>
+    <% end %>
+  </div>
+  <div class="span6">
+    <%= f.field_container :presentation do %>
+      <%= f.label :presentation, t(:presentation)+" *" %>
+      <%= f.text_field :presentation, :class => 'span12' %>
+      <%= f.error_message_on :presentation %>
+    <% end %>
+  </div>
+</div>
