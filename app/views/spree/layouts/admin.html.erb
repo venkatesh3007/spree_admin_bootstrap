@@ -7,8 +7,8 @@
   <head data-hook="admin_inside_head">
     <%= render :partial => 'spree/admin/shared/head' %>
   </head>
-  
-  <body class='admin' data-ajax-root-path="<%= spree.root_path %>">
+
+  <body class="admin" data-ajax-root-path="<%= spree.root_path %>" data-css-hook="<%= css_hook %>">
     <div id='wrapper' data-hook>
 
       <header id="header" data-hook>
@@ -32,7 +32,7 @@
             </div>
           </nav>
         <% end %>
-        
+
       </header>
 
       <div class="container-fluid">
