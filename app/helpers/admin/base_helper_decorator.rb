@@ -1,4 +1,9 @@
 Spree::Admin::BaseHelper.class_eval do
+
+  def css_hook
+    "#{controller.controller_name}-#{controller.action_name}"
+  end
+
   def link_to_add_fields(name, target, options = {})
     name = '' if options[:no_text]
     css_classes = options[:class] ? options[:class] + " add_fields" : "add_fields"
