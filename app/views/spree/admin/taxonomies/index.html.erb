@@ -1,0 +1,13 @@
+<%= render :partial => 'spree/admin/shared/configuration_menu' %>
+
+<% content_for :page_title do %>
+  <%= t(:taxonomies) %>
+<% end %>
+
+<% content_for :page_actions do %>
+  <%= button_link_to t(:new_taxonomy), spree.new_admin_taxonomy_url, :icon => 'icon-plus icon-white', :id => 'admin_new_taxonomy_link', :class => 'btn btn-success' %></p>
+<% end %>
+
+<div id='list-taxonomies' data-hook>
+  <%= render :partial => 'list' %>
+</div>
