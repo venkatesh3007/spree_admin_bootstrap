@@ -10,7 +10,7 @@
   <%= button_link_to t(:back_to_taxonomies_list), spree.admin_taxonomies_path, :icon => 'icon-arrow-left', :class => 'btn' %>
 <% end %>
 
-<div id="ajax_error" class="errorExplanation" style="display:none;"></div>
+<div id="ajax_error" class="errorExplanation alert alert-danger" style="display:none;"></div>
 
 <%= form_for [:admin, @taxonomy] do |f| %>
   <fieldset class="no-border-top">
