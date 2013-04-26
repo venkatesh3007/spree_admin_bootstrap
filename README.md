@@ -6,8 +6,8 @@ Spree 1-3-stable admin Bootstrap theme.
 Installation
 -----------
 - Run:
-```
-$bundle exec rails g spree_admin_bootstrap:install
+```bash
+$ bundle exec rails g spree_admin_bootstrap:install
 ```
 - Edit the file app\assets\stylesheets\admin\all.css, it should only require the admin/spree_admin_bootstrap. It will look like
 ```
