@@ -1,0 +1,18 @@
+<fieldset id="calculator_fields" data-hook>
+  <legend><%= t(:calculator) %></legend>
+
+  <div id="preference-settings" data-hook>
+    <%= f.label(:calculator_type, t(:calculator), :for => 'calc_type') %>
+    <%= f.select(:calculator_type, @calculators.map { |c| [c.description, c.name] }, {}, {:id => 'calc_type', :class => 'select2 fullwidth'}) %>
+    <% if !@object.new_record? %>
+      <div class="calculator-settings">
+        <%= f.fields_for :calculator do |calculator_form| %>
+          <%= preference_fields(@object.calculator, calculator_form) %>
+        <% end %>
+      </div>
+      <% if @object.calculator.respond_to?(:preferences) %>
+        <span class="help-block"><%= t(:calculator_settings_warning) %></span>
+      <% end %>
+    <% end %>    
+  </div>
+</fieldset>
