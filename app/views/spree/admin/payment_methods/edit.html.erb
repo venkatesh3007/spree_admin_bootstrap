@@ -1,0 +1,21 @@
+<%= render :partial => 'spree/admin/shared/configuration_menu' %>
+
+<% content_for :page_title do %>
+  <%= t(:editing_payment_method) %> - <%= @payment_method.name %>
+<% end %>
+
+<% content_for :page_actions do %>
+  <%= button_link_to t(:back_to_payment_methods_list), spree.admin_payment_methods_path, :icon => 'icon-arrow-left', :class => 'btn' %>
+<% end %>
+
+<%= render :partial => 'spree/shared/error_messages', :locals => { :target => @payment_method } %>
+
+<%= form_for @payment_method, :url => admin_payment_method_path(@payment_method) do |f| %>
+  <fieldset>
+    <%= render :partial => 'form', :locals => { :f => f } %>
+    <div data-hook="buttons" class="form-actions actions">
+      <%= button t(:update), 'btn btn-large btn-primary' %>
+    </div>
+  </fieldset>
+
+<% end %>

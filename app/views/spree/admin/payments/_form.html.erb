@@ -2,7 +2,7 @@
   <%= f.label :amount, t(:amount) %>
   <%= f.text_field :amount, :value => @order.outstanding_balance, :class => 'fullwidth' %>
   <label><%= t(:payment_method) %></label>
-  <div class="marginb">
+  <div class="marginb20">
     <% @payment_methods.each do |method| %>
       <div class="radio" data-hook="payment_method_field">
         <%= radio_button_tag 'payment[payment_method_id]', method.id, method == @payment_method %>
