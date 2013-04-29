@@ -25,8 +25,6 @@ Features
 Screenshots
 -----------
 
-Progress after a lazy sunday hackfest.
-
 ### Products
 ![image](screens/screen1.png)
 
