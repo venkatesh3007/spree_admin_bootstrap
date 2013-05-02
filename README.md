@@ -5,20 +5,14 @@ Spree 1-3-stable admin Bootstrap theme.
 
 Installation
 -----------
+- Add to Gemfile:
+```
+gem 'spree_admin_bootstrap', :github => 'oxpeck/spree_admin_bootstrap'
+```
+
 - Run:
 ```
 $ bundle exec rails g spree_admin_bootstrap:install
-```
-- Edit the file app\assets\stylesheets\admin\all.css, it should only require the admin/spree_admin_bootstrap. It will look like
-```
-/*
- * This is a manifest file that'll automatically include all the stylesheets available in this directory
- * and any sub-directories. You're free to add application-wide styles to this file and they'll appear at
- * the top of the compiled file, but it's generally better to create a new file per style scope.
- *
-
- *= require admin/spree_admin_bootstrap
-*/
 ```
 
 Features
@@ -30,8 +24,6 @@ Features
 
 Screenshots
 -----------
-
-Progress after a lazy sunday hackfest.
 
 ### Products
 ![image](screens/screen1.png)

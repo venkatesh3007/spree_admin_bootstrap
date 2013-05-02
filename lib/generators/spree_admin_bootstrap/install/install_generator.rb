@@ -3,26 +3,21 @@ module SpreeAdminBootstrap
     class InstallGenerator < Rails::Generators::Base
 
       def add_javascripts
-        #append_file 'app/assets/javascripts/store/all.js', "//= require store/spree_admin_bootstrap\n"
         append_file 'app/assets/javascripts/admin/all.js', "//= require admin/spree_admin_bootstrap\n"
       end
 
       def add_stylesheets
-        #inject_into_file 'app/assets/stylesheets/store/all.css', " *= require store/spree_admin_bootstrap\n", :before => /\*\//, :verbose => true
-        inject_into_file 'app/assets/stylesheets/admin/all.css', " *= require admin/spree_admin_bootstrap\n", :before => /\*\//, :verbose => true
-      end
-
-      def add_migrations
-        run 'bundle exec rake railties:install:migrations FROM=spree_admin_bootstrap'
-      end
-
-      def run_migrations
-         res = ask 'Would you like to run the migrations now? [Y/n]'
-         if res == '' || res.downcase == 'y'
-           run 'bundle exec rake db:migrate'
-         else
-           puts 'Skipping rake db:migrate, don\'t forget to run it!'
-         end
+        remove_file 'app/assets/stylesheets/admin/all.css'
+        create_file 'app/assets/stylesheets/admin/all.css' do
+          "/*
+ * This is a manifest file that'll automatically include all the stylesheets available in this directory
+ * and any sub-directories. You're free to add application-wide styles to this file and they'll appear at
+ * the top of the compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require admin/spree_admin_bootstrap
+*/
+"
+        end
       end
     end
   end
