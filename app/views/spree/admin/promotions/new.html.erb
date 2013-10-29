@@ -1,0 +1,14 @@
+<% content_for :page_title do %>
+  <%= t(:new_promotion) %>
+<% end %>
+
+<% content_for :page_actions do %>
+    <%= button_link_to t(:back_to_promotions_list), spree.admin_promotions_path, :icon => 'icon-arrow-left', :class => 'btn'  %>
+<% end %>
+
+<%= form_for :promotion, :url => collection_url do |f| %>
+  <fieldset>
+    <%= render :partial => 'form', :locals => { :f => f } %>
+    <%= render :partial => 'spree/admin/shared/new_resource_links' %>
+  </fieldset>
+<% end %>
