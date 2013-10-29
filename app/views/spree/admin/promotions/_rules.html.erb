@@ -5,7 +5,7 @@
       <legend align="center"><%= t(:rules) %></legend>
       <%= label_tag :promotion_rule_type, t(:add_rule_of_type) %>  
       <%= select_tag('promotion_rule[type]', options_for_promotion_rule_types(@promotion), :class => 'select2 fullwidth') %>
-      <%= button t(:add), :class => "btn" %>
+      <%= button t(:add), "btn" %>
     </fieldset>
   <% end %>
 
@@ -28,7 +28,7 @@
           <% end %>
         </div>
 
-        <%= button t(:update), :class => "btn"%>
+        <%= button t(:update), "btn" %>
       </fieldset>
     <% end %>
   
