@@ -12,7 +12,7 @@
 <% end %>
 
 <% if @order.inventory_units.any? &:shipped? %>
-  <table class="index">
+  <table class="table table-bordered">
     <thead data-hook="rma_header">
       <tr>
         <th><%= t(:rma_number) %></th>
