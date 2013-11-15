@@ -10,13 +10,13 @@ module SpreeAdminBootstrap
         remove_file 'app/assets/stylesheets/admin/all.css'
         create_file 'app/assets/stylesheets/admin/all.css' do
           "/*
- * This is a manifest file that'll automatically include all the stylesheets available in this directory
- * and any sub-directories. You're free to add application-wide styles to this file and they'll appear at
- * the top of the compiled file, but it's generally better to create a new file per style scope.
- *
- *= require admin/spree_admin_bootstrap
-*/
-"
+          * This is a manifest file that'll automatically include all the stylesheets available in this directory
+          * and any sub-directories. You're free to add application-wide styles to this file and they'll appear at
+          * the top of the compiled file, but it's generally better to create a new file per style scope.
+          *
+          *= require admin/spree_admin_bootstrap
+          */
+          "
         end
       end
     end
