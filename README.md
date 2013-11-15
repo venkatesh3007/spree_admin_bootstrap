@@ -7,7 +7,7 @@ Installation
 -----------
 - Add to Gemfile:
 ```
-gem 'spree_admin_bootstrap', :github => 'oxpeck/spree_admin_bootstrap'
+gem 'spree_admin_bootstrap', :github => 'reinaris/spree_admin_bootstrap', :branch => '1-3-stable'
 ```
 
 - Run:
