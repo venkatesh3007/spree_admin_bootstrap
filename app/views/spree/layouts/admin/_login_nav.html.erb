@@ -1,0 +1,7 @@
+<% if spree_current_user %>
+  <li data-hook="user-account-link"><%= link_to Spree.t(:account), spree.edit_user_path(spree_current_user) %></li>
+  <li data-hook="user-logout-link">
+  	<%= link_to Spree.t(:logout), spree.destroy_spree_user_session_path %></li>
+  <li data-hook="store-frontend-link">
+  </i><%= link_to Spree.t(:back_to_store), spree.root_path, :target => '_blank' %></li>
+<% end %>
