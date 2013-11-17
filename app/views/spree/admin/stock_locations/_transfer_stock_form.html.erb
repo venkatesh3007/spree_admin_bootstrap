@@ -1,7 +1,7 @@
 <%= form_tag transfer_stock_admin_stock_locations_path do %>
   <fieldset>
     <legend align="center"><%= Spree.t(:move_stock_between_locations)%></legend>
-    <div data-hook="admin_stock_movements_form_fields" class="row">
+    <div data-hook="admin_stock_movements_form_fields" class="">
       <div class="five columns">
         <div class="field" id="stock_movement_transfer_from_field">
           <%= label_tag :stock_location_from_id, Spree.t(:transfer_from_location) %>

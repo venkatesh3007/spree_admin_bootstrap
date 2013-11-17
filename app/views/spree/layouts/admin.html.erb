@@ -33,10 +33,12 @@
       <%= render :partial => 'spree/admin/shared/header' %>
       
       <%= render :partial => 'spree/admin/shared/sub_menu' %>
-      <%= render :partial => 'spree/admin/shared/content_header' %>
 
-      <div class="container">
-        <div class="row">
+      <div class="container-fluid">
+
+        <%= render :partial => 'spree/admin/shared/content_header' %>
+
+        <div class="">
           <div class="<%= 'with-sidebar ' if content_for?(:sidebar) %>" id="content" data-hook>
             <%= render :partial => 'spree/admin/shared/table_filter' %>
 
