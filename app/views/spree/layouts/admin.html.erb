@@ -9,6 +9,9 @@
   </head>
 
   <body class='admin'>
+
+    <%= render :partial => 'spree/admin/shared/header' %>
+    
     <div id='wrapper' class="container-fluid" data-hook>
 
       <% if flash[:error] %>
@@ -29,10 +32,6 @@
       </div>
 
       <%= render :partial => 'spree/admin/shared/alert', :collection => session[:alerts] %>
-
-      <%= render :partial => 'spree/admin/shared/header' %>
-      
-      <%= render :partial => 'spree/admin/shared/sub_menu' %>
 
       <div class="container-fluid">
 
