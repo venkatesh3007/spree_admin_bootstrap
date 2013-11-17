@@ -9,29 +9,29 @@
   </head>
 
   <body class='admin'>
-    <div id='wrapper' data-hook>
+    <div id='wrapper' class="container-fluid" data-hook>
 
       <% if flash[:error] %>
-        <div class="flash error"><%= flash[:error] %></div>
+        <div class="alert alert-danger"><%= flash[:error] %></div>
       <% end %>
       <% if notice %>
-        <div class="flash notice"><%= notice %></div>
+        <div class="alert alert-info"><%= notice %></div>
       <% end %>
       <% if flash[:success] %>
-        <div class="flash success"><%= flash[:success] %></div>
+        <div class="alert alert-success"><%= flash[:success] %></div>
       <% end %>
 
       <div id="progress">
-        <div class="wrapper">
+        <div class="progress-message alert alert-info">
           <div id="spinner"></div>
-          <div class="progress-message"><%= Spree.t(:loading) %>...</div>
+          <%= Spree.t(:loading) %>...
         </div>
       </div>
 
       <%= render :partial => 'spree/admin/shared/alert', :collection => session[:alerts] %>
 
       <%= render :partial => 'spree/admin/shared/header' %>
-      <%= render :partial => 'spree/admin/shared/menu' %>
+      
       <%= render :partial => 'spree/admin/shared/sub_menu' %>
       <%= render :partial => 'spree/admin/shared/content_header' %>
 

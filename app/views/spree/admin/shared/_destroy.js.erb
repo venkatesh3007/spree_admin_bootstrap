@@ -6,9 +6,9 @@ if notice %>
     notice_div.show();
   } else {
     if ($("#content .toolbar").length > 0) {
-      $("#content .toolbar").before('<div class="flash notice"><%= notice %></div>');
+      $("#content .toolbar").before('<div class="alert alert-info"><%= notice %></div>');
     } else {
-      $("#content h1").before('<div class="flash notice"><%= notice %></div>');
+      $("#content h1").before('<div class="alert alert-info"><%= notice %></div>');
     }
   } <%
 end %>

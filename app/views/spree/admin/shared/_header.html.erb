@@ -1,9 +1,21 @@
-<header id="header" data-hook>
-  <div class="container">
-    <figure data-hook="logo-wrapper" class="columns five">
-      <%= link_to image_tag(Spree::Config[:admin_interface_logo], :id => 'logo'), spree.admin_path %>
-    </figure>
-
-    <nav data-hook="admin_login_navigation_bar" class="columns eleven"></nav>
+<div id="header" class="navbar navbar-inverse navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container-fluid">
+      <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="brand" href="#">Spree</a>
+      <div class="nav-collapse collapse">
+      	<ul class="nav pull-right">
+	      	<li class="dropdown">
+	          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= spree_current_user.email %> <b class="caret"></b></a>
+	          <ul data-hook="admin_login_navigation_bar" class="dropdown-menu"></nav>
+	        </li>
+	      </ul>
+      	<%= render :partial => 'spree/admin/shared/menu' %>
+      </div><!--/.nav-collapse -->
+    </div>
   </div>
-</header>
+</div>
