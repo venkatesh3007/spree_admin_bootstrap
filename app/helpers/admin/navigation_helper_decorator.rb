@@ -24,4 +24,8 @@ Spree::Admin::NavigationHelper.class_eval do
     end
   end
 
+  def button(text, icon_name = nil, button_type = 'submit', options={})
+    button_tag(text, options.merge(:type => button_type, :class => "spree#{icon_name} btn"))
+  end
+
 end

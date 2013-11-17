@@ -11,3 +11,20 @@
   color: #ffffff;
   background-color: #111111;
 }
+
+#content-header {
+	position: relative;
+	.page-actions {
+		position: absolute;
+		right: 0;
+		top: 15px;
+		ul.inline-menu {
+			margin: 0;
+			list-style: none;
+		}
+	}
+}
+
+.select2-container {
+	min-width: 220px;
+}
