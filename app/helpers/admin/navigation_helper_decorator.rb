@@ -1,5 +1,10 @@
 Spree::Admin::NavigationHelper.class_eval do
 
+  def link_to_clone(resource, options={})
+    options[:data] = {:action => 'clone'}
+    link_to_with_icon('icon-retweet', Spree.t(:clone), clone_object_url(resource), options)  
+  end
+
   def button_link_to(text, url, html_options = {})
     if (html_options[:method] &&
         html_options[:method].to_s.downcase != 'get' &&
