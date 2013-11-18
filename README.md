@@ -9,7 +9,7 @@ We are currently working on the 2-1-stable branch. Pull requests are welcome!
 
 1-3-stable
 -----------
-Want to see the Boostrap Admin Theme? Please switch to the 1-3-stable branch.
+Want to see the Boostrap Admin Theme? Please switch to the 1-3-stable branch to see some screenshots.
 
 Installation
 -----------
