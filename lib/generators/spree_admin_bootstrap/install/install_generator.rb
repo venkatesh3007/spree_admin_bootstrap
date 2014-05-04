@@ -3,12 +3,12 @@ module SpreeAdminBootstrap
     class InstallGenerator < Rails::Generators::Base
 
       def add_javascripts
-        append_file 'app/assets/javascripts/admin/all.js', "//= require admin/spree_admin_bootstrap\n"
+        append_file 'vendor/assets/javascripts/spree/backend/all.js', "//= require admin/spree_admin_bootstrap\n"
       end
 
       def add_stylesheets
-        remove_file 'app/assets/stylesheets/admin/all.css'
-        create_file 'app/assets/stylesheets/admin/all.css' do
+        remove_file 'vendor/assets/stylesheets/spree/backend/all.css'
+        create_file 'vendor/assets/stylesheets/spree/backend/all.css' do
           "/*
           * This is a manifest file that'll automatically include all the stylesheets available in this directory
           * and any sub-directories. You're free to add application-wide styles to this file and they'll appear at
